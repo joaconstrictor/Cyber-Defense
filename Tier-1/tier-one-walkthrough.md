@@ -97,7 +97,7 @@ Run the python script, convert the output to strings and send to a file.
 	
 •	commands: 
 	
-	nano dataEncoded
+	nano dataTwo.py
 
 •	enter the following: 
 	
@@ -111,11 +111,9 @@ Run the python script, convert the output to strings and send to a file.
 
 note: enter the array inside the brackets. 
 
-run the script: 
-	
-	python3 dataEncoded
-	
-8. For emulation I used speakeasy on the byte array file I created using the python script on step 8.
+![dataEncoded.py](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/data2-py.png)
+
+8. For emulation I used speakeasy on the byte array file I created using the python script above.
 
 •	command: 
 	
