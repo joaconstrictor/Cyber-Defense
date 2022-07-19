@@ -1,3 +1,7 @@
+# Description
+
+For this challenge we were given a fictitious scenario involving a new threat actor called Copper Crow. This actor is operating out of a new area with a focus on ransomeware and extortion. "Our company" has recently noticed an alert for a suspicious phishing email involving this threat actor, and our job is to analyze the malicious document in this email to validate the information and see if there is malware or actions that need our attention.
+
 # Executive Summary
 
 In the excel document "invoice-02-01-2022.xls" provided for this malware investigation we can determine the presence of malicious macros with the use of oletools. The examination of this document in a sandbox gives us information regarding this payload, which was created through a Metasploit framework module. 
@@ -191,7 +195,7 @@ MIME Type: application/vnd.ms-excel
 
 Size: 24kB 	
 
-SHA246: a3f128976fb477883db4f7ecc2aae05e61e2de224ad584454022aced8f8f5ca5
+SHA256: a3f128976fb477883db4f7ecc2aae05e61e2de224ad584454022aced8f8f5ca5
 
 # References
 	
