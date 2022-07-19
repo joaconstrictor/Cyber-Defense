@@ -36,7 +36,7 @@ What I suspect is happening is once the document is opened, the AutoOpen() funct
 
 	python3 oledump.py invoice-02-01-2022.xls or oledump.py invoice-02-01-2022.xls
 
-a)	Displayed Stream 8 - Module1 
+- Displayed Stream 8 - Module1 
 
 command: 
 	
