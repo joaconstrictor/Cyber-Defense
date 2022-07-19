@@ -12,7 +12,7 @@ What I suspect is happening is once the document is opened, the AutoOpen() funct
 
 # Analysis
 
-1. Initial assessment to verify the type of file and see the file's metadata.
+1. Initial assessment to verify the type of file and see the file's metadata. I used the file command to verify the file type, and the metadata command to see if there was any important information for this file.
 
 •	command: 
 
@@ -26,7 +26,7 @@ What I suspect is happening is once the document is opened, the AutoOpen() funct
 
 ![exiftool](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/exiftool.png)
 
-2. To further analyze this file I used oleid. This displays the file properties, such as the presence of malicious macros.
+2. To further analyze this file I used oleid (https://github.com/decalage2/oletools/wiki/oleid). This displays the file properties, such as the presence of malicious macros.
 
 •	command: 
 
@@ -34,7 +34,7 @@ What I suspect is happening is once the document is opened, the AutoOpen() funct
 
 ![oleid](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/oleid.png)
 
-3. In order to see the macros on this document I used oledump.py, this displayed the streams and macros. There are macros present on stream 8, indicated with the capitalized letter M. I extracted this stream and sent it to a file named "Module1" to analyze. 
+3. In order to see the macros on this document I used oledump.py (https://blog.didierstevens.com/programs/oledump-py/), this displayed the streams and macros. There are macros present on stream 8, indicated with the capitalized letter M. I extracted this stream and sent it to a file named "Module1" to analyze. 
 
 •	command: 
 
@@ -49,7 +49,7 @@ command:
 	
 ![display-stream-8](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/cat-stream-8.png)
 	
-4. Extracted macros using olevba. 
+4. Extracted macros using olevba (https://github.com/decalage2/oletools/wiki/olevba). 
 
 •	command: 
 
@@ -58,7 +58,7 @@ command:
 ![olevba](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/olevba.png)
 ![olevba](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/olevba2.png)
 
-There is an AutoOpen on this file, which means that in this phishing campaign, users who received an email with the infected document and who open this document will get infected. 
+There is an AutoExec in this file, which means that in this phishing campaign, users who received an email with the infected document and who open this document will get infected. 
 We can also determine there are some Windows API calls of interest such as CreateThread, VirtualAlloc, RtlMoveMemory, etc., that may inject code into another process. 
 
 5. Using a Python script I converted the array present in the macros into characters and sent the output to strings to analyze. 
@@ -113,11 +113,15 @@ note: enter the array inside the brackets.
 
 ![dataEncoded.py](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/data2-py.png)
 
-8. For emulation I used speakeasy on the byte array file I created using the python script above.
+Run the script and send the output to a file:
+	
+	python dataTwo.py > dataEncoded
+
+8. For emulation I used speakeasy (https://github.com/mandiant/speakeasy) on the byte array file I created using the python script above.
 
 •	command: 
 	
-	speakeasy -t <binary file> -r -a x86 -m -o report.json 
+	speakeasy -t dataEncoded -r -a x86 -m -o report.json 
 	
 ![speakeasy](https://github.com/joaconstrictor/Cyber-Defense/blob/main/Tier-1/images/speakeasy.png)
 	
